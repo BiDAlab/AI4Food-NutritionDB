@@ -1,0 +1,19 @@
+Rice
+Drinks
+Meat
+Salad
+Fast food
+Fruits
+Eggs
+Dairy products
+Beans
+Seafood
+Mixed food
+Noodle & Pasta
+Bread & similar products
+Fish
+Soups & Stews
+Sweet products
+Sandwich & similar products
+Salty snakcs
+Vegetables
