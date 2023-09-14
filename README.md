@@ -186,6 +186,15 @@ Finally, the model will be prepared to recognise the food class of the various f
     
 ## <a name="cite">Citation<a>
 - **[AI4Food-NutritionDB_2022]** S. Romero-Tapiador,  R. Tolosana, A. Morales, J. Fierrez, R. Vera-Rodriguez, I. Espinosa-Salinas, E. Carrillo-de Santa Pau, A. Ramirez-de Molina and J. Ortega-Garcia, **"Leveraging Automatic Personalised Nutrition: Food Image Recognition Benchmark and Dataset based on Nutrition Taxonomy"**, arXiv preprint arXiv:2211.07440, 2022.
+
+  ```
+  @article{romerotapiador2023leveraging,
+      title={Leveraging Automatic Personalised Nutrition: Food Image Recognition Benchmark and Dataset based on Nutrition Taxonomy}, 
+      author={Sergio Romero-Tapiador and Ruben Tolosana and Aythami Morales and Isabel Espinosa-Salinas and Gala Freixer and Julian Fierrez and Ruben Vera-Rodriguez and Enrique Carrillo de Santa Pau and Ana Ramírez de Molina and Javier Ortega-Garcia},
+      year={2023},
+      journal={arXiv preprint arXiv:2211.07440}
+}
+  ```
     
 All these articles are publicly available in the [publications](http://atvs.ii.uam.es/atvs/listpublications.do) section of the BiDA-Lab group webpage. Please, remember to reference the above articles on any work made public.
     
