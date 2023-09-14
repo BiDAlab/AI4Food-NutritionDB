@@ -110,7 +110,7 @@ In order to generate the AI4Food-NutritionDB food image database, all seven data
 + **ISIA Food-500** ([Download link](http://123.57.42.89/Dataset_ict/ISIA_Food500_Dir/dataset/)): link to download website. ISIA_Food500.z01~10 and ISIA_Food500.zip files must be downloaded.
 + **VIPER-FoodNet** ([Direct download](https://lorenz.ecn.purdue.edu/~vfn/vfn_1_0.zip)).
 
-After downloading all 7 databases, place them in the same path as this GitHub repository (previously cloned or downloaded). Then, download the **[AI4Food-NutritionDB.txt](http://atvs.ii.uam.es/atvs/2022/AI4Food-NutritionDB/)** and also place it in the same path as before. Finally, run **database_generation.py** and wait until the database is properly generated! Once this last step is done, the AI4Food-NutritionDB database will be available. As mentioned in the paper, the database is organised into 19 major categories, 73 subcategories, and 911 final products.
+After downloading all 7 databases, place them in the same path as this GitHub repository (previously cloned or downloaded). Then, download the **[AI4Food-NutritionDB.txt](http://atvs.ii.uam.es/atvs/2022/AI4Food-NutritionDB/)** and also place it in the same path as before. Finally, run [**database_generation.py**](https://github.com/BiDAlab/AI4Food-NutritionDB/blob/main/src/database_generation.py) and wait until the database is properly generated! Once this last step is done, the AI4Food-NutritionDB database will be available. As mentioned in the paper, the database is organised into 19 major categories, 73 subcategories, and 911 final products.
     
 ``` 
 python database_generation.py
@@ -177,7 +177,7 @@ For instance:
 python food_recognition_system.py --model category --img multiple --show false
 ``` 
     
-**NOTE**: **test images are located in the media/sample folder**. Place food images inside this folder or change the path of the **test_dir** parameter (in [food_recognition_system.py](https://github.com/BiDAlab/AI4Food-NutritionDB/blob/4497e6756b88e09faa91592577a86966a96be697/src/food_recognition_system.py#L89) file).
+**NOTE**: **test images are located in the media/sample folder**. Place food images inside this folder or change the path of the **test_dir** parameter (in [food_recognition_system.py](https://github.com/BiDAlab/AI4Food-NutritionDB/blob/main/src/food_recognition_system.py) file).
 
 Finally, the model will be prepared to recognise the food class of the various food images. Examples of both correct and wrong predictions are shown below:
 
