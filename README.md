@@ -100,15 +100,15 @@ For reproducibility reasons, **we adopt the same experimental protocol considere
 
 ## <a name="download">Download AI4Food-NutritionDB Food Image Database<a>
 
-In order to generate the AI4Food-NutritionDB food image database, all seven databases must be downloaded and placed in the correct path. For each of them, we provide some guidelines to download it. Note that 5 of them have a direct download link, so it will be redirected to the corresponding database.
+In order to generate the AI4Food-NutritionDB food image database, all seven databases must be downloaded and placed in the correct path. For each of them, we provide some guidelines to download it. Note that 5 of them have a link, which will direct you to the corresponding database.
     
-+ **UECFood-256** ([Direct download](http://foodcam.mobi/dataset256.zip)).
-+ **Food-101** ([Direct download](http://data.vision.ee.ethz.ch/cvl/food-101.tar.gz)). 
-+ **Food-11** ([Direct download](https://www.kaggle.com/datasets/vermaavi/food11/download)): You must first sign in (or log in) to Kaggle. 
-+ **FruitVeg-81** ([Download instructions](https://www.tugraz.at/institute/icg/research/team-bischof/lrs/downloads/fruitveg81/)): follow the download instructions (you need to send an email) before downloading the database.
-+ **MAFood-121** ([Direct download](https://drive.google.com/uc?id=1lr3b7cPl_yoBK1N8thDJMYpPNCxDZFPD&export=download)).
++ **UECFood-256** ([Right-click here to copy the URL](http://foodcam.mobi/dataset256.zip)).
++ **Food-101** ([Right-click here to copy the URL](http://data.vision.ee.ethz.ch/cvl/food-101.tar.gz)). 
++ **Food-11** ([Direct Download](https://www.kaggle.com/datasets/vermaavi/food11/download)): You must first sign in (or log in) to Kaggle. 
++ **FruitVeg-81** ([Download instructions](https://www.tugraz.at/index.php?id=22808)): follow the download instructions (you need to send an email) before downloading the database.
++ **MAFood-121** ([Direct Download](https://drive.google.com/uc?id=1lr3b7cPl_yoBK1N8thDJMYpPNCxDZFPD&export=download)).
 + **ISIA Food-500** ([Download link](http://123.57.42.89/Dataset_ict/ISIA_Food500_Dir/dataset/)): link to download website. ISIA_Food500.z01~10 and ISIA_Food500.zip files must be downloaded.
-+ **VIPER-FoodNet** ([Direct download](https://lorenz.ecn.purdue.edu/~vfn/vfn_1_0.zip)).
++ **VIPER-FoodNet** ([Right-click here to copy the URL](https://lorenz.ecn.purdue.edu/~vfn/vfn_1_0.zip)).
 
 After downloading all 7 databases, place them in the same path as this GitHub repository (previously cloned or downloaded). Then, download the **[AI4Food-NutritionDB.txt](http://atvs.ii.uam.es/atvs/2022/AI4Food-NutritionDB/)** and also place it in the same path as before. Finally, run [**database_generation.py**](https://github.com/BiDAlab/AI4Food-NutritionDB/blob/main/src/database_generation.py) and wait until the database is properly generated! Once this last step is done, the AI4Food-NutritionDB database will be available. As mentioned in the paper, the database is organised into 19 major categories, 73 subcategories, and 911 final products.
     
