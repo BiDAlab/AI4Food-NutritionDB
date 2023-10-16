@@ -42,7 +42,7 @@ Leading a healthy lifestyle has become one of the most challenging goals in toda
 
 This study presents the **AI4Food-NutritionDB database**, the first nutrition database that considers food images and a nutrition taxonomy based on recommendations by national and international organisms. In addition, **four different categorisation levels** are considered following nutrition experts: **6 nutritional levels, 19 main categories (e.g., 'Meat'), 73 subcategories (e.g., 'White Meat'), and 893 final food products (e.g., 'Chicken')**. The AI4Food-NutritionDB opens the doors to new food computing approaches in terms of food intake frequency, quality, and categorisation. Also, in addition to the database, we propose a standard experimental protocol and benchmark including three tasks based on the nutrition taxonomy (i.e., category, subcategory, and final product) to be used for the research community. Finally, we also **release our Deep Learning models** trained with the AI4Food-NutritionDB, which can be used as pre-trained models, achieving accurate recognition results with challenging food image databases. 
 
-<p align="center"><img src="./media/AI4Food-NutritionDB Framework.svg" alt="framework" title="AI4Food-NutritionDB Framework"/></p>
+<p align="center"><img src="./media/AI4Food-NutritionDB Framework.jpg" alt="framework" title="AI4Food-NutritionDB Framework"/></p>
 
 ### <a name="ai4fooddb">AI4Food-NutritionDB Food Image Database<a>
 AI4Food-NutritionDB has been built by combining food images from 7 different databases in the state of the art, considering food products from all over the world. The seven food image databases are described below:
