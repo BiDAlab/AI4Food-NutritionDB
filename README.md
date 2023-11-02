@@ -63,7 +63,7 @@ AI4Food-NutritionDB has been built by combining food images from 7 different dat
 + [VIPER-FoodNet](https://lorenz.ecn.purdue.edu/~vfn/) [7]: Similar to Food-11, VIPER-FoodNet is an 82-category database where the authors considered the most frequent food products consumed in the United States from the What We Eat In America (WWEIA) database. All the images were obtained using the web scraping acquisition protocol, concretely from Google Images.
 
 
-### <a name="systems">Food Recognition System<a>
+### <a name="systems">Food Recognition Systems<a>
 
 The proposed food recognition systems are based on the state-of-the-art **Xception** [8] and [EfficientNetV2](https://github.com/sebastian-sz/efficientnet-v2-keras/tree/main) [9] architectures due to the high performance obtained in computer vision tasks.  In this work, we follow the same training approach considered in [10]: using a pre-trained model with ImageNet [11], the last fully-connected layers are replaced by the corresponding number of classes (defined by each experiment). Then, all the weights are fixed up to the fully-connected layers and we re-train the model for 10 epochs. Finally, the whole network is trained again for 50 more epochs, choosing the best-performing model in terms of validation accuracy. We use the following features for all the experiments: Adam optimiser based on binary cross-entropy using a learning rate of 10<sup>-3</sup>, $\beta_1$ and $\beta_2$ of $0.9$ and $0.999$, respectively. In addition, training and testing are performed with an image size of 224x224. 
 
@@ -130,9 +130,7 @@ We encourage the research community to use the AI4Food-NutritionDB  database in 
 **NOTE:** It is important to remark that the AI4Food-NutritionDB database must be previously downloaded before using the experimental protocol.
 
 ## <a name="models">How to use the Food Recognition Systems<a>
-3 different food recognition systems are available in this repository. Each one represents a different granularity defined by the number of categories, subcategories, and products. First, the environment must be installed and activated in order to use our food recognition models.
-    
-**IMPORTANT**: To utilize our food recognition systems, **you must download or clone this repository**. Additionally, you should **download the models from our [server](http://atvs.ii.uam.es/atvs/2022/models/)**. Once downloaded, place the contents of the "models" folder **inside the repository folder**.
+Two food recognition systems and a total of six different models are available in this repository. Each one represents a different architecture (Xception and EfficientNetV2) and a granularity defined by the number of categories, subcategories, and products. First, the environment must be installed and activated in order to use our food recognition models.
     
 ### <a name="install">Install & Requirements<a>
 Please, follow the steps to install the environment properly on your computer:
@@ -163,12 +161,13 @@ conda activate FoodRecognition_env
 After installing the configuration for the current environment, food recognition models can be executed from the terminal as follows:
     
 ``` 
-python food_recognition_system.py --model [model_name] --img [img_parameter] --show [show_parameter]
+python food_recognition_system.py --arch [architecture_name] --model [model_name] --img [img_parameter] --show [show_parameter]
 ```     
     
 
 Where:
-    
+
++ **--arch** are the different architectures: **xception** or **efficientnetv2**
 + **--model** are the different available models: **category**, **subcategory** or **product**
 + **--img** to run a single or multiple images: **single** or **multiple**
 + **--show** to show (or not) the image with its corresponding final prediction: **true** or **false**
@@ -176,7 +175,7 @@ Where:
 For instance: 
     
 ``` 
-python food_recognition_system.py --model category --img multiple --show false
+python food_recognition_system.py --arch efficientnetv2 --model category --img multiple --show false
 ``` 
     
 **NOTE**: **test images are located in the media/sample folder**. Place food images inside this folder or change the path of the **test_dir** parameter (in [food_recognition_system.py](https://github.com/BiDAlab/AI4Food-NutritionDB/blob/main/src/food_recognition_system.py) file).
