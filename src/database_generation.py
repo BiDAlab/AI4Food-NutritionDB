@@ -2,7 +2,7 @@
 BiDA Lab - Universidad Autonoma de Madrid
 Author: Sergio Romero-Tapiador
 Creation Date: 20/07/2022
-Last Modification: 14/09/2023
+Last Modification: 03/11/2023
 -----------------------------------------------------
 This code implements the generation of the AI4Food-NutritionDB food image database. To generate it successfully, please ensure 
 that all databases and the AI4Food-NutritionDB.txt file are located in the same directory as this Python program file. 
@@ -12,6 +12,7 @@ Then, execute this program and wait until the AI4Food-NutritionDB database is fu
 # Import some libraries
 import os
 import shutil
+import requests
 from tqdm import tqdm
 
 # Databases path for each one
@@ -150,44 +151,70 @@ def link_ddbb_path(ddbb):
     return None
 
 
+# Download the file from the URL
+def download_file(path):
+    url = "http://atvs.ii.uam.es/atvs/AI4Food-NutritionDB/AI4Food-NutritionDB.txt"
+
+    response = requests.get(url, stream=True)
+
+    # Check if the request was successful (status code 200)
+    if response.status_code == 200:
+        total_size = int(response.headers.get('content-length', 0))
+        block_size = 1024  # 1 KB
+        progress_bar = tqdm(total=total_size, unit='B', unit_scale=True)
+
+        with open(path, 'wb') as file:
+            for data in response.iter_content(block_size):
+                progress_bar.update(len(data))
+                file.write(data)
+        progress_bar.close()
+
+        return True
+    else:
+        return False
+
+
 # Generate the AI4Food-NutritionDB food image database
 def generate_ddbb():
-    correspondence_file = None
-    try:
-        # First, the correspondence file is loaded
-        correspondence_file = open(os.path.join(current_path, "AI4Food-NutritionDB.txt"), "r", encoding='utf-8')
-    except:
-        print("AI4Food-NutritionDB.txt must be placed in the same path as the python program file!")
+    file_path = os.path.join(current_path, "AI4Food-NutritionDB.txt")
+    if not os.path.exists(file_path):
+        print("\n\n\nDownloading the file AI4Food-NutritionDB.txt...")
+        flag_download = download_file(file_path)
 
-    if correspondence_file is not None:
-        # Each line correspond to an unique image split in 3 different objects by a | character:
-        #       - Corresponding database
-        #       - Source image path (from the corresponding database)
-        #       - Destination image path
-        imgs_correspondences = correspondence_file.readlines()
-        for img_correspondence in tqdm(imgs_correspondences):
-            split_line = img_correspondence.split("|")
+        if flag_download:
+            print("\n\n\nFile downloaded properly!")
+        else:
+            print("\n\n\nFile not downloaded properly!")
+            exit()
 
-            ddbb = split_line[0]  # Corresponding database
-            img_src = split_line[1]  # Source image path (from the corresponding database)
-            img_dst = split_line[2].split("\n")[0]  # Destination image path
+    # Each line correspond to an unique image split in 3 different objects by a | character:
+    #       - Corresponding database
+    #       - Source image path (from the corresponding database)
+    #       - Destination image path
+    imgs_correspondences = correspondence_file.readlines()
+    for img_correspondence in tqdm(imgs_correspondences):
+        split_line = img_correspondence.split("|")
 
-            # Check if the directory exists
-            final_folders_path = os.path.join(current_path, "/".join(img_dst.split("/")[0:-1]))
-            if os.path.isdir(final_folders_path) is False:
-                os.makedirs(final_folders_path)
+        ddbb = split_line[0]  # Corresponding database
+        img_src = split_line[1]  # Source image path (from the corresponding database)
+        img_dst = split_line[2].split("\n")[0]  # Destination image path
 
-            # Get the database path
-            ddbb_path = link_ddbb_path(ddbb)
-            if ddbb_path is not None:
-                src = os.path.join(ddbb_path, img_src)
-                dst = os.path.join(current_path, img_dst)
+        # Check if the directory exists
+        final_folders_path = os.path.join(current_path, "/".join(img_dst.split("/")[0:-1]))
+        if os.path.isdir(final_folders_path) is False:
+            os.makedirs(final_folders_path)
 
-                try:
-                    # Finally, make a copy of the source image in the final destination
-                    shutil.copyfile(src, dst)
-                except:
-                    print("Error trying to copy the image " + src + " to " + dst)
+        # Get the database path
+        ddbb_path = link_ddbb_path(ddbb)
+        if ddbb_path is not None:
+            src = os.path.join(ddbb_path, img_src)
+            dst = os.path.join(current_path, img_dst)
+
+            try:
+                # Finally, make a copy of the source image in the final destination
+                shutil.copyfile(src, dst)
+            except:
+                print("Error trying to copy the image " + src + " to " + dst)
 
 
 def main():
