@@ -149,21 +149,22 @@ conda upgrade --all
 conda env create -f FoodRecognition_env.yml
 ```     
 
-OR
-
-3) **Install Dependencies:** Ensure you have Python installed on your system. You can install any necessary Python packages by running the following command:
-
-```bash
-pip install -r requirements.txt
-```
-
 4) **Activate the created environment:**
         
 ``` 
 conda activate FoodRecognition_env
 ```
 
-    
+OR
+
+
+1) **Install Dependencies:** Ensure you have Python installed on your system. You can install any necessary Python packages by running the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
+
 ### <a name="run">Run the Model<a>
 After installing the configuration for the current environment, food recognition models can be executed from the terminal as follows:
     
