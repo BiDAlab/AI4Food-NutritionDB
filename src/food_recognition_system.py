@@ -2,19 +2,21 @@
 BiDA Lab - Universidad Autonoma de Madrid
 Author: Sergio Romero-Tapiador
 Creation Date: 20/07/2022
-Last Modification: 14/09/2023
+Last Modification: 03/11/2023
 -----------------------------------------------------
-This code provides the implementation of the Food Recognition System using Xception Networks. All three models have been trained
-on the AI4Food-NutritionDB food image database. To run it successfully, please follow the provided instructions posted in
-https://github.com/BiDAlab/AI4Food-NutritionDB
+This code provides the implementation of the Food Recognition Systems using Xception and EfficientNetV2 architectures.
+All three models have been trained on the AI4Food-NutritionDB food image database. To run it successfully,
+please follow the provided instructions posted in https://github.com/BiDAlab/AI4Food-NutritionDB
 """
 
 # Import some libraries
 import argparse
 import glob
 import os
+import requests
 import matplotlib.pyplot as plt
 import numpy as np
+from tqdm import tqdm
 from tensorflow.keras import models
 from tensorflow.keras.preprocessing import image
 
@@ -22,12 +24,14 @@ from tensorflow.keras.preprocessing import image
 # Parse the arguments
 def parser_arguments():
     parser = argparse.ArgumentParser()
+    parser.add_argument('--arch', default='efficientnetv2', help='Architecture to use: xception or efficientnetv2')
     parser.add_argument('--model', default='category', help='Model to use: category, subcategory, product')
     parser.add_argument('--img', default='single', help='Run a  single or multiple images')
     parser.add_argument('--show', default='false', help='true if show the images (false otherwise)')
 
     opt = parser.parse_args()
 
+    assert opt.arch == "xception" or opt.arch == "efficientnetv2", "Architecture must be: xception or efficientnetv2"
     assert opt.model == "category" or opt.model == "subcategory" or opt.model == "product", "Model must be: category, subcategory or product"
     assert opt.img == "single" or opt.img == "multiple", "Img parameter must be single or multiple"
     assert opt.show == "true" or opt.show == "false", "Parameter to show (true) or not (false) the images"
@@ -73,6 +77,33 @@ def load_classes(model, path):
     return lst_classes
 
 
+# Download the model from the URL
+def download_model(path, architecture, model):
+    model_name = architecture + "_" + model + "_model" + ".hdf5"
+    url = "http://atvs.ii.uam.es/atvs/AI4Food-NutritionDB/" + model_name
+
+    response = requests.get(url, stream=True)
+
+    # Check if the request was successful (status code 200)
+    if response.status_code == 200:
+        total_size = int(response.headers.get('content-length', 0))
+        block_size = 1024  # 1 KB
+        progress_bar = tqdm(total=total_size, unit='B', unit_scale=True)
+
+        if os.path.isdir(path) is False:
+            os.makedirs(path)
+
+        with open(os.path.join(path, model_name), 'wb') as file:
+            for data in response.iter_content(block_size):
+                progress_bar.update(len(data))
+                file.write(data)
+        progress_bar.close()
+
+        return True
+    else:
+        return False
+
+
 # Main function
 if __name__ == "__main__":
     # First, the arguments are parsed
@@ -83,15 +114,26 @@ if __name__ == "__main__":
     os.chdir("..")
     path = os.getcwd()
 
-    # Get the model name
-    model_dir = os.path.join(path, "models")
+    # Download models from URL if they are not in the models folder
+    model_folder_dir = os.path.join(path, "models")
+    model_dir = os.path.join(model_folder_dir, opt.arch + "_" + opt.model + "_model" + ".hdf5")
+    print(model_dir)
+    if not os.path.exists(model_dir):
+        print("\n\n\nDownloading the model...")
+        flag_download = download_model(model_folder_dir, opt.arch, opt.model)
+
+        if flag_download:
+            print("\n\n\nModel downloaded properly!")
+        else:
+            print("\n\n\nModel not downloaded properly!")
+            exit()
 
     # Get the full path of the test directory
     test_dir = os.path.join(path, "media", "sample")
 
-    # Xception recognition system
+    # Load the food recognition system
     print("\n\n\nLoading the model...")
-    model = models.load_model(os.path.join(model_dir, opt.model + '_model' + '.hdf5'))
+    model = models.load_model(model_dir)
     lst_classes = load_classes(opt.model, os.path.join(path, "src"))
     print("\n\n\nModel loaded properly!")
 
@@ -116,4 +158,4 @@ if __name__ == "__main__":
             if opt.show == "true":
                 show_img(img_path, final_class)
 
-
+    print("\n\n\nExiting...")
