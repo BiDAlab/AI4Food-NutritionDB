@@ -134,26 +134,34 @@ Two food recognition systems and a total of six different models are available i
 ### <a name="install">Install & Requirements<a>
 Please, follow the steps to install the environment properly on your computer:
     
-1) Install [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/)
+1) **Install [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/)**
 
-2) Update Conda (from the Conda terminal):
+2) **Update Conda** (from the Conda terminal):
 
 ``` 
 conda update conda
 conda upgrade --all
 ``` 
     
-3) Create a new environment from .yml file:  
+3) **Create a new environment from .yml file:**
     
 ``` 
 conda env create -f FoodRecognition_env.yml
 ```     
 
-4) Activate the created environment:
+OR
+
+3) **Install Dependencies:** Ensure you have Python installed on your system. You can install any necessary Python packages by running the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
+4) **Activate the created environment:**
         
 ``` 
 conda activate FoodRecognition_env
-```  
+```
 
     
 ### <a name="run">Run the Model<a>
