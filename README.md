@@ -1,8 +1,8 @@
-<a href="http://atvs.ii.uam.es/atvs/">
-    <img src="./media/BiDA-logo.png" alt="BiDA Lab" title="BiDA Lab" align="right" height="150" width="350" target="_blank"/>
-</a>
 
 ## Introduction
+<a href="http://atvs.ii.uam.es/atvs/">
+    <img src="./media/BiDA-logo.png" alt="BiDA Lab" title="BiDA Lab" align="right" height="150" width="350"/>
+</a>
 
 Welcome to the AI4Food-NutritionDB GitHub repository! 
 
