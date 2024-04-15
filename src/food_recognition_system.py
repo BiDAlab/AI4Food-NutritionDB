@@ -137,6 +137,10 @@ if __name__ == "__main__":
     lst_classes = load_classes(opt.model, os.path.join(path, "src"))
     print("\n\n\nModel loaded properly!")
 
+    # For category efficientnetv2 model, replace Dairy products with Beans and vice versa
+    if opt.arch == "efficientnetv2" and opt.model == "category":
+        lst_classes[7], lst_classes[8] = lst_classes[8], lst_classes[7]
+
     # Load the test image and predict its class
     print("\n\n\nTesting food images...")
     lst_imgs = os.listdir(test_dir)
