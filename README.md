@@ -16,6 +16,8 @@ In this repository, you will find valuable resources that can aid researchers an
 
 - **Pre-trained Models**: We also provide our pre-trained Deep Learning models, fine-tuned with the AI4Food-NutritionDB dataset.
 
+For further details, please visit [our article](https://doi.org/10.1007/s11042-024-19161-4).
+
 ## Getting Started
 
 To get started, visit the respective sections in the repository and follow the provided instructions. For any questions or collaborations, please don't hesitate to contact us.
@@ -194,7 +196,7 @@ Finally, the model will be prepared to recognise the food class of the various f
 
     
 ## <a name="cite">Citation<a>
-- **[AI4Food-NutritionDB_2022]** S. Romero-Tapiador,  R. Tolosana, A. Morales, J. Fierrez, R. Vera-Rodriguez, I. Espinosa-Salinas, E. Carrillo-de Santa Pau, A. Ramirez-de Molina and J. Ortega-Garcia, **"Leveraging Automatic Personalised Nutrition: Food Image Recognition Benchmark and Dataset based on Nutrition Taxonomy"**, arXiv preprint arXiv:2211.07440, 2022.
+- **[AI4Food-NutritionDB_2024]** S. Romero-Tapiador,  R. Tolosana, A. Morales, J. Fierrez, R. Vera-Rodriguez, I. Espinosa-Salinas, E. Carrillo-de Santa Pau, A. Ramirez-de Molina and J. Ortega-Garcia, [**"Leveraging Automatic Personalised Nutrition: Food Image Recognition Benchmark and Dataset based on Nutrition Taxonomy"**](https://doi.org/10.1007/s11042-024-19161-4), Multimedia Tools and Applications, 2024.
 
   ```
   @ARTICLE{romerotapiador2024leveraging,
