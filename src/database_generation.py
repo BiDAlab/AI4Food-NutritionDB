@@ -153,7 +153,7 @@ def link_ddbb_path(ddbb):
 
 # Download the file from the URL
 def download_file(path):
-    url = "http://atvs.ii.uam.es/atvs/AI4Food-NutritionDB/AI4Food-NutritionDB.txt"
+    url = "https://bidalab.eps.uam.es/static/AI4Food-NutritionDB/AI4Food-NutritionDB.txt"
 
     response = requests.get(url, stream=True)
 
