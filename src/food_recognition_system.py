@@ -80,7 +80,7 @@ def load_classes(model, path):
 # Download the model from the URL
 def download_model(path, architecture, model):
     model_name = architecture + "_" + model + "_model" + ".hdf5"
-    url = "http://atvs.ii.uam.es/atvs/AI4Food-NutritionDB/" + model_name
+    url = "https://bidalab.eps.uam.es/static/AI4Food-NutritionDB/" + model_name
 
     response = requests.get(url, stream=True)
 
