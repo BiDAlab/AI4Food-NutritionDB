@@ -4,7 +4,7 @@
     <img src="./media/BiDA-logo.png" alt="BiDA Lab" title="BiDA Lab" align="right" height="150" width="350"/>
 </a>
 
-Welcome to the AI4Food-NutritionDB GitHub repository! 
+Welcome to the AI4Food-NutritionDB GitHub repository!
 
 In this repository, you will find valuable resources that can aid researchers and developers in various ways:
 
